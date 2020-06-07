@@ -128,7 +128,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="19°" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="30" translatesAutoresizingMaskIntoConstraints="NO" id="Ajp-D9-8hq">
-                                                            <rect key="frame" x="370" y="0.0" width="28" height="40"/>
+                                                            <rect key="frame" x="276" y="0.0" width="28" height="40"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="28" id="9mn-5l-O0P"/>
                                                             </constraints>
@@ -137,13 +137,13 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clear" translatesAutoresizingMaskIntoConstraints="NO" id="kjV-g9-6Nf">
-                                                            <rect key="frame" x="200.5" y="13.5" width="13" height="13"/>
+                                                            <rect key="frame" x="152" y="12" width="16" height="16"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="kjV-g9-6Nf" secondAttribute="height" multiplier="1:1" id="vab-JR-aa5"/>
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jyn-jF-bi7">
-                                                            <rect key="frame" x="16" y="0.0" width="184.5" height="40.5"/>
+                                                            <rect key="frame" x="16" y="0.0" width="136" height="40.5"/>
                                                             <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="14"/>
                                                             <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
