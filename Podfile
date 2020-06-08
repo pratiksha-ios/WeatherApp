@@ -6,6 +6,7 @@ target 'WeatherApp' do
   use_frameworks!
   pod 'Alamofire', '~> 4.1'
   pod 'JGProgressHUD'
+  pod 'RealmSwift'
 
   # Pods for WeatherApp
 

@@ -7,14 +7,16 @@
 //
 
 import Foundation
-struct Forecast : Codable {
-    let dt : Double?
-    let main : Main?
-    let weather : [Weather]?
-    let clouds : Clouds?
-    let wind : Wind?
-    let sys : Sys?
-    let dt_txt : String?
+import RealmSwift
+
+class Forecast: Object, Codable {
+    dynamic var dt : Double?
+    dynamic var main : Main?
+    dynamic var weather : [Weather]?
+    dynamic var clouds : Clouds?
+    dynamic var wind : Wind?
+    dynamic var sys : Sys?
+    dynamic var dt_txt : String?
     
     enum CodingKeys: String, CodingKey {
         case dt = "dt"
@@ -26,7 +28,8 @@ struct Forecast : Codable {
         case dt_txt = "dt_txt"
     }
     
-    init(from decoder: Decoder) throws {
+    public required convenience init(from decoder: Decoder) throws {
+        self.init()
         let values = try decoder.container(keyedBy: CodingKeys.self)
         dt = try values.decodeIfPresent(Double.self, forKey: .dt)
         main = try values.decodeIfPresent(Main.self, forKey: .main)

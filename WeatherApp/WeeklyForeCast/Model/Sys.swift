@@ -7,14 +7,17 @@
 //
 
 import Foundation
-struct Sys : Codable {
-    let pod : String?
+import RealmSwift
+
+class Sys: Object, Codable {
+    dynamic var pod: String?
     
     enum CodingKeys: String, CodingKey {
         case pod = "pod"
     }
     
-    init(from decoder: Decoder) throws {
+    public required convenience init(from decoder: Decoder) throws {
+        self.init()
         let values = try decoder.container(keyedBy: CodingKeys.self)
         pod = try values.decodeIfPresent(String.self, forKey: .pod)
     }

@@ -7,14 +7,17 @@
 //
 
 import Foundation
-struct Clouds : Codable {
-    let all : Int?
+import RealmSwift
+
+class Clouds: Object, Codable {
+    dynamic var all : Int?
     
     enum CodingKeys: String, CodingKey {
         case all = "all"
     }
     
-    init(from decoder: Decoder) throws {
+    public required convenience init(from decoder: Decoder) throws {
+        self.init()
         let values = try decoder.container(keyedBy: CodingKeys.self)
         all = try values.decodeIfPresent(Int.self, forKey: .all)
     }

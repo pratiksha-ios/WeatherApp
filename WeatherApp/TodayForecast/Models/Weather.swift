@@ -7,25 +7,28 @@
 //
 
 import Foundation
-struct Weather : Codable {
-    let id : Int?
-    let main : String?
-    let description : String?
-    let icon : String?
+import RealmSwift
+
+class Weather: Object, Codable {
+    dynamic var id : Int?
+    dynamic var main : String?
+    dynamic var descriptionWeather : String?
+    dynamic var icon : String?
     
     enum CodingKeys: String, CodingKey {
         
         case id = "id"
         case main = "main"
-        case description = "description"
+        case descriptionWeather = "description"
         case icon = "icon"
     }
     
-    init(from decoder: Decoder) throws {
+    public required convenience init(from decoder: Decoder) throws {
+        self.init()
         let values = try decoder.container(keyedBy: CodingKeys.self)
         id = try values.decodeIfPresent(Int.self, forKey: .id)
         main = try values.decodeIfPresent(String.self, forKey: .main)
-        description = try values.decodeIfPresent(String.self, forKey: .description)
+        descriptionWeather = try values.decodeIfPresent(String.self, forKey: .descriptionWeather)
         icon = try values.decodeIfPresent(String.self, forKey: .icon)
     }
     

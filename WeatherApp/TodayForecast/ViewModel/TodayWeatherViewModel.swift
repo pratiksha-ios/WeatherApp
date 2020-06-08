@@ -30,11 +30,11 @@ class TodayWeatherViewModel  {
             strongSelf.showLoadingHud.value = false
             switch result {
             case .success(let data):
-                if let description = data.weather?.first?.main {
-                    strongSelf.description.value = description
-                }
                 if let temp = data.main?.temp {
                     strongSelf.currentTemp.value = String(Int(round(temp - TodayWeatherViewModel.baseTemperature))) + "° Current"
+                }
+                if let description = data.weather?.first?.main {
+                    strongSelf.description.value = description
                 }
                 if let temp_min = data.main?.temp_min {
                     strongSelf.minTemp.value = String(Int(round(temp_min - TodayWeatherViewModel.baseTemperature))) + "°   Min"

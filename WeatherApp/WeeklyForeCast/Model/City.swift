@@ -7,18 +7,28 @@
 //
 
 import Foundation
-struct City : Codable {
-    let id : Int?
-    let name : String?
-    
+import RealmSwift
+
+class City: Object, Codable {
+    dynamic var id : Int?
+    dynamic var name : String?
+    dynamic var country : String?
+    dynamic var coord : Coord?
+
     enum CodingKeys: String, CodingKey {
         case id = "id"
         case name = "name"
+        case country = "country"
+        case coord = "coord"
     }
     
-    init(from decoder: Decoder) throws {
+    public required convenience init(from decoder: Decoder) throws {
+        self.init()
         let values = try decoder.container(keyedBy: CodingKeys.self)
         id = try values.decodeIfPresent(Int.self, forKey: .id)
         name = try values.decodeIfPresent(String.self, forKey: .name)
+        country = try values.decodeIfPresent(String.self, forKey: .country)
+        coord = try values.decodeIfPresent(Coord.self, forKey: .coord)
+        
     }
 }
