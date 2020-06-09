@@ -9,15 +9,15 @@
 import Foundation
 import RealmSwift
 
-class Main: Object, Codable {
-    dynamic var temp : Double?
-    dynamic var temp_min : Double?
-    dynamic var temp_max : Double?
-    dynamic var pressure : Double?
-    dynamic var sea_level : Double?
-    dynamic var grnd_level : Double?
-    dynamic var humidity : Int?
-    dynamic var temp_kf : Double?
+@objcMembers class Main: Object, Codable {
+    dynamic var temp : Double = 0
+    dynamic var temp_min : Double = 0
+    dynamic var temp_max : Double = 0
+    dynamic var pressure : Double = 0
+    dynamic var sea_level : Double = 0
+    dynamic var grnd_level : Double = 0
+    dynamic var humidity : Int = 0
+    dynamic var temp_kf : Double = 0
     
     enum CodingKeys: String, CodingKey {
         
@@ -34,14 +34,14 @@ class Main: Object, Codable {
     public required convenience init(from decoder: Decoder) throws {
         self.init()
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        temp = try values.decodeIfPresent(Double.self, forKey: .temp)
-        temp_min = try values.decodeIfPresent(Double.self, forKey: .temp_min)
-        temp_max = try values.decodeIfPresent(Double.self, forKey: .temp_max)
-        pressure = try values.decodeIfPresent(Double.self, forKey: .pressure)
-        sea_level = try values.decodeIfPresent(Double.self, forKey: .sea_level)
-        grnd_level = try values.decodeIfPresent(Double.self, forKey: .grnd_level)
-        humidity = try values.decodeIfPresent(Int.self, forKey: .humidity)
-        temp_kf = try values.decodeIfPresent(Double.self, forKey: .temp_kf)
+        temp = try values.decodeIfPresent(Double.self, forKey: .temp) ?? 0
+        temp_min = try values.decodeIfPresent(Double.self, forKey: .temp_min) ?? 0
+        temp_max = try values.decodeIfPresent(Double.self, forKey: .temp_max) ?? 0
+        pressure = try values.decodeIfPresent(Double.self, forKey: .pressure) ?? 0
+        sea_level = try values.decodeIfPresent(Double.self, forKey: .sea_level) ?? 0
+        grnd_level = try values.decodeIfPresent(Double.self, forKey: .grnd_level) ?? 0
+        humidity = try values.decodeIfPresent(Int.self, forKey: .humidity) ?? 0
+        temp_kf = try values.decodeIfPresent(Double.self, forKey: .temp_kf) ?? 0
     }
     
 }

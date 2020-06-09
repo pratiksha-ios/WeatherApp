@@ -8,22 +8,23 @@
 
 import RealmSwift
 
-class TodayWeather: Object, Codable {
-    dynamic var weather : [Weather]?
-    dynamic var main : Main?
-    dynamic var id : Double?
+@objcMembers class TodayWeather: Object, Codable {
+    dynamic var main : Main? = nil
+    dynamic var dt : Double = 0
+    let weather = RealmSwift.List<Weather>()
 
     enum CodingKeys: String, CodingKey {
         case weather = "weather"
         case main = "main"
-        case id = "id"
+        case dt = "dt"
     }
     
     public required convenience init(from decoder: Decoder) throws {
         self.init()
         let values = try decoder.container(keyedBy: CodingKeys.self)
         main = try values.decodeIfPresent(Main.self, forKey: .main)
-        weather = try values.decodeIfPresent([Weather].self, forKey: .weather)
-        id = try values.decodeIfPresent(Double.self, forKey: .id) ?? 0
+        let weathers = try values.decode([Weather].self, forKey: .weather)
+        weather.append(objectsIn: weathers)
+        dt = try values.decodeIfPresent(Double.self, forKey: .dt) ?? 0
     }
 }

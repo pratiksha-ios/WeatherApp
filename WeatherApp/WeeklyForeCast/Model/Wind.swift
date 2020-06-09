@@ -9,9 +9,9 @@
 import Foundation
 import RealmSwift
 
-class Wind: Object, Codable {
-    dynamic var speed : Double?
-    dynamic var deg : Double?
+@objcMembers class Wind: Object, Codable {
+    dynamic var speed : Double = 0
+    dynamic var deg : Double = 0
 
     enum CodingKeys: String, CodingKey {
         case speed = "speed"
@@ -21,7 +21,7 @@ class Wind: Object, Codable {
     public required convenience init(from decoder: Decoder) throws {
         self.init()
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        speed = try values.decodeIfPresent(Double.self, forKey: .speed)
-        deg = try values.decodeIfPresent(Double.self, forKey: .deg)
+        speed = try values.decodeIfPresent(Double.self, forKey: .speed) ?? 0
+        deg = try values.decodeIfPresent(Double.self, forKey: .deg) ?? 0
     }
 }

@@ -9,32 +9,33 @@
 import Foundation
 import RealmSwift
 
-class WeeklyWeather: Object, Codable {
-    dynamic var cod : String? = nil
-    dynamic var message : Double?
-    dynamic var cnt : Int?
-    dynamic var list : [Forecast]?
-    dynamic var city : City?
-    dynamic var id : Double?
-    
+@objcMembers class WeeklyWeather: Object, Codable {
+    dynamic var cod : String? = ""
+    dynamic var message : Double = 0
+    dynamic var cnt : Int = 0
+    dynamic var city : City? = nil
+    dynamic var dt : Double = 0
+    let list = RealmSwift.List<Forecast>()
+
     enum CodingKeys: String, CodingKey {
         case cod = "cod"
         case message = "message"
         case cnt = "cnt"
         case list = "list"
         case city = "city"
-        case id = "id"
+        case dt = "dt"
     }
     
     public required convenience init(from decoder: Decoder) throws {
         self.init()
         let values = try decoder.container(keyedBy: CodingKeys.self)
         cod = try values.decodeIfPresent(String.self, forKey: .cod)
-        message = try values.decodeIfPresent(Double.self, forKey: .message)
-        cnt = try values.decodeIfPresent(Int.self, forKey: .cnt)
-        list = try values.decodeIfPresent([Forecast].self, forKey: .list)
+        message = try values.decodeIfPresent(Double.self, forKey: .message) ?? 0
+        cnt = try values.decodeIfPresent(Int.self, forKey: .cnt) ?? 0
+        let lists = try values.decode([Forecast].self, forKey: .list)
+        list.append(objectsIn: lists)
         city = try values.decodeIfPresent(City.self, forKey: .city)
-        id = try values.decodeIfPresent(Double.self, forKey: .id) ?? 0
+        dt = try values.decodeIfPresent(Double.self, forKey: .dt) ?? 0
     }
     
 }

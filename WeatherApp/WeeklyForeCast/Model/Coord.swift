@@ -9,9 +9,9 @@
 import Foundation
 import RealmSwift
 
-class Coord: Object, Codable {
-    dynamic var lat : Double?
-    dynamic var lon : Double?
+@objcMembers class Coord: Object, Codable {
+    dynamic var lat : Double = 0
+    dynamic var lon : Double = 0
     
     enum CodingKeys: String, CodingKey {
         case lat = "lat"
@@ -21,8 +21,8 @@ class Coord: Object, Codable {
     public required convenience init(from decoder: Decoder) throws {
         self.init()
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        lat = try values.decodeIfPresent(Double.self, forKey: .lat)
-        lon = try values.decodeIfPresent(Double.self, forKey: .lon)
+        lat = try values.decodeIfPresent(Double.self, forKey: .lat) ?? 0
+        lon = try values.decodeIfPresent(Double.self, forKey: .lon) ?? 0
     }
     
 }

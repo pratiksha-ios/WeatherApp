@@ -19,7 +19,7 @@ class RealmManager: NSObject {
         }
         return objects
     }
-    
+        
     func deleteAllDataForObject(_ T : Object.Type) {
         
         self.delete(self.retrieveAllDataForObject(T))

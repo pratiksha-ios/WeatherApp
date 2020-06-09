@@ -18,7 +18,7 @@ extension Forecast: WeeklyCellViewModel{
         return String(format: "%.2f", self.main?.temp ?? "")
     }
     var dayStr : String{
-        if ((self.weather?.count) != nil), let weather = self.weather?.first, let dayString = weather.main {
+        if ((self.weather.count) > 0), let weather = self.weather.first, let dayString = weather.main {
             return dayString
         }
         return ""

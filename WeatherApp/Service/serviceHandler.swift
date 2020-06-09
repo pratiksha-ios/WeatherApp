@@ -1,5 +1,5 @@
 //
-//  AppServerClient.swift
+//  ServiceHandler.swift
 //  WeatherApp
 //
 //  Created by Admin on 2020/06/07.
@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 
-class AppServerClient {
+class ServiceHandler {
     
     static func setUrlPathComponent(url:URL,params: [(String, String)])-> URLComponents{
         var queryItems = params.map { URLQueryItem(name: $0.0, value: $0.1) }
@@ -43,7 +43,7 @@ class AppServerClient {
     
     func getWeeklyDataOfFiveDays(params: [(String, String)], completion: @escaping WeeklyResultCompletion){
         
-        let urlComponent = AppServerClient.setUrlPathComponent(url: URL(string:ResourcePath.Forecast.path)!, params: params)
+        let urlComponent = ServiceHandler.setUrlPathComponent(url: URL(string:ResourcePath.Forecast.path)!, params: params)
         guard let urlString = urlComponent.url?.absoluteString else {
             return
         }
@@ -80,7 +80,7 @@ class AppServerClient {
     
     func getTodayWeather(params: [(String, String)], completion: @escaping TodayResultCompletion){
         
-        let urlComponent = AppServerClient.setUrlPathComponent(url:URL(string:ResourcePath.CurrentWeather.path)!, params: params)
+        let urlComponent = ServiceHandler.setUrlPathComponent(url:URL(string:ResourcePath.CurrentWeather.path)!, params: params)
         print((urlComponent.url?.absoluteString)!)
         Alamofire.request((urlComponent.url?.absoluteString)!, method:.get, parameters:nil, encoding: JSONEncoding.default)
             .validate(statusCode: 200 ..< 300)

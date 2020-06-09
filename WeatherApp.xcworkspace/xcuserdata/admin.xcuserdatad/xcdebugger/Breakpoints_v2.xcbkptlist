@@ -58,7 +58,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WeatherApp/WeeklyForeCast/WeatherInfoVC.swift"
-            timestampString = "613255211.385342"
+            timestampString = "613419972.2381589"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "98"
@@ -74,13 +74,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WeatherApp/WeeklyForeCast/WeatherInfoVC.swift"
-            timestampString = "613255211.3857861"
+            timestampString = "613419972.258269"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "92"
             endingLineNumber = "92"
-            landmarkName = "bindTodayViewModel()"
-            landmarkType = "7">
+            landmarkName = "WeatherInfoVC"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -90,12 +90,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WeatherApp/WeeklyForeCast/WeatherInfoVC.swift"
-            timestampString = "613255211.386071"
+            timestampString = "613419972.2587121"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "89"
             endingLineNumber = "89"
-            landmarkName = "bindTodayViewModel()"
+            landmarkName = "bindWeeklyViewModel()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -106,7 +106,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WeatherApp/WeeklyForeCast/WeatherInfoVC.swift"
-            timestampString = "613255211.386348"
+            timestampString = "613419972.2591341"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "95"

@@ -12,7 +12,7 @@ import JGProgressHUD
 class SharedClass: NSObject {
     static let sharedInstance = SharedClass()
     let loader = JGProgressHUD(style: .extraLight)
-    
+    var dateMiliSeconds : Double = 0
     func showLoader(_ strTitle:String = "Loading") {
         DispatchQueue.main.async {
             if var topController = UIApplication.shared.delegate?.window??.rootViewController {

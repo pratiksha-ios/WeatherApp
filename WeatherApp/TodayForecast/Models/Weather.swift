@@ -9,11 +9,11 @@
 import Foundation
 import RealmSwift
 
-class Weather: Object, Codable {
-    dynamic var id : Int?
-    dynamic var main : String?
-    dynamic var descriptionWeather : String?
-    dynamic var icon : String?
+@objcMembers class Weather: Object, Codable {
+    dynamic var id : Int = 0
+    dynamic var main : String? = ""
+    dynamic var descriptionWeather : String? = ""
+    dynamic var icon : String? = ""
     
     enum CodingKeys: String, CodingKey {
         
@@ -26,7 +26,7 @@ class Weather: Object, Codable {
     public required convenience init(from decoder: Decoder) throws {
         self.init()
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        id = try values.decodeIfPresent(Int.self, forKey: .id)
+        id = try values.decodeIfPresent(Int.self, forKey: .id) ?? 0
         main = try values.decodeIfPresent(String.self, forKey: .main)
         descriptionWeather = try values.decodeIfPresent(String.self, forKey: .descriptionWeather)
         icon = try values.decodeIfPresent(String.self, forKey: .icon)

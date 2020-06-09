@@ -9,8 +9,8 @@
 import Foundation
 import RealmSwift
 
-class Sys: Object, Codable {
-    dynamic var pod: String?
+@objcMembers class Sys: Object, Codable {
+    dynamic var pod: String? = ""
     
     enum CodingKeys: String, CodingKey {
         case pod = "pod"

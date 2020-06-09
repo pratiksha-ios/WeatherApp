@@ -30,7 +30,6 @@ class WeeklyTableViewCell: UITableViewCell {
             lblTemperature.text = temp
         }
         if let day = viewModel?.dayStr {
-            print(day)
             lblDay.text = day
         }
     }

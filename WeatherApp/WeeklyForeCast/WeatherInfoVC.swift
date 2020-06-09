@@ -21,10 +21,11 @@ class WeatherInfoVC: UIViewController {
     @IBOutlet weak var lblCurrentTemp: UILabel!
     @IBOutlet weak var lblMinTemp: UILabel!
     @IBOutlet weak var lblMaxTemp: UILabel!
-    
+    @IBOutlet weak var btnFavouriteLocation: UIButton!
+
     @IBOutlet weak var tableView: UITableView!
     let todayViewModel: TodayWeatherViewModel = TodayWeatherViewModel()
-    let weeklyViewModel: WeeklyWeatherTableViewModel = WeeklyWeatherTableViewModel()
+    let weeklyViewModel: WeeklyWeatherViewModel = WeeklyWeatherViewModel()
     
     // Viewcontroller lifecycle methods
     override func viewDidLoad() {
@@ -32,6 +33,7 @@ class WeatherInfoVC: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(getWeatherData), name: .getWeatherData, object: nil)
         bindWeeklyViewModel()
         bindTodayViewModel()
+        setupLongPressOnLocation()
     }
     
     override func didReceiveMemoryWarning() {
@@ -42,6 +44,7 @@ class WeatherInfoVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         getWeatherData()
+        checkLocationAndConnection()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -63,7 +66,8 @@ class WeatherInfoVC: UIViewController {
     // checking location and connection
     private func checkLocationAndConnection(){
         if !Reachability.isConnectedToNetwork(){
-            showInternetAlert()
+            todayViewModel.getTodayWeatherDataFromLocalDB()
+            weeklyViewModel.getWeeklyDataFromLocalDB()
         }
         if !LocationService.isLocationServiceEnabled(){
             showLocationAlert()
@@ -74,6 +78,9 @@ class WeatherInfoVC: UIViewController {
     private func bindWeeklyViewModel() {
         weeklyViewModel.weeklyDatacells.bindAndFire() { [weak self] _ in
             self?.tableView?.reloadData()
+            self?.weeklyViewModel.checkCurrentLocationMarkAsFavourite(completion: { (isFavourite) in
+                    self?.btnFavouriteLocation.isSelected = isFavourite
+            })
         }
         weeklyViewModel.onShowError = { [weak self] alert in
             self?.presentSingleButtonDialog(alert: alert)
@@ -115,8 +122,8 @@ class WeatherInfoVC: UIViewController {
         let lat = location.coordinate.latitude
         let lon = location.coordinate.longitude
         DispatchQueue.once {
-            weeklyViewModel.getWeeklyData(params: [("lat", "\(lat)"), ("lon", "\(lon)")])
             todayViewModel.getCurrentWeatherData(params: [("lat", "\(lat)"), ("lon", "\(lon)")])
+            weeklyViewModel.getWeeklyData(params: [("lat", "\(lat)"), ("lon", "\(lon)")])
         }
     }
     
@@ -126,6 +133,26 @@ class WeatherInfoVC: UIViewController {
         cell.contentView.backgroundColor = .clear
         cell.textLabel?.text = message
         return cell
+    }
+    
+    private func setupLongPressOnLocation() {
+        let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleShowAllFavouriteLocations))
+        btnFavouriteLocation.addGestureRecognizer(longGesture)
+    }
+    
+    @objc func handleShowAllFavouriteLocations(sender: UILongPressGestureRecognizer) {
+        if sender.state == .ended {
+            print("Long press Ended")
+            // todo display places on map
+        }
+    }
+
+    @IBAction func onBtnFavouriteTapped(sender:UIButton) {
+        if !sender.isSelected {
+            weeklyViewModel.setWeeklyWeatherAsFavourite()
+            todayViewModel.setTodayWeatherAsFavourite()
+            sender.isSelected = !sender.isSelected
+        }
     }
 }
 
