@@ -38,6 +38,11 @@
 		840CCE0F248D247300DFB2DD /* DispatchQueue+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840CCE0E248D247300DFB2DD /* DispatchQueue+Extension.swift */; };
 		840CCE11248D248A00DFB2DD /* Array+UniqueElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840CCE10248D248A00DFB2DD /* Array+UniqueElement.swift */; };
 		840CCE13248D249D00DFB2DD /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840CCE12248D249D00DFB2DD /* UIViewController+Extension.swift */; };
+		849DE97A2492154100BE789F /* AlertTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849DE9742492154100BE789F /* AlertTests.swift */; };
+		849DE97B2492154100BE789F /* WeatherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849DE9752492154100BE789F /* WeatherApp.swift */; };
+		849DE97C2492154100BE789F /* TodayWeatherViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849DE9772492154100BE789F /* TodayWeatherViewModelTests.swift */; };
+		849DE97D2492154100BE789F /* WeeklyWeatherTableViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849DE9782492154100BE789F /* WeeklyWeatherTableViewModelTest.swift */; };
+		849DE97E2492154100BE789F /* RealmManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849DE9792492154100BE789F /* RealmManagerTests.swift */; };
 		84F0A355248D817100541775 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F0A354248D817100541775 /* RealmManager.swift */; };
 		A1BE92F54F72E6C59C29ADE8 /* Pods_WeatherApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ED18D8D53FA00A23D77558B /* Pods_WeatherApp.framework */; };
 		D110D4AD5795C78B3A5FC7AF /* Pods_WeatherAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EABD97F8438FB73718048441 /* Pods_WeatherAppTests.framework */; };
@@ -90,6 +95,11 @@
 		840CCE0E248D247300DFB2DD /* DispatchQueue+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Extension.swift"; sourceTree = "<group>"; };
 		840CCE10248D248A00DFB2DD /* Array+UniqueElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+UniqueElement.swift"; sourceTree = "<group>"; };
 		840CCE12248D249D00DFB2DD /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		849DE9742492154100BE789F /* AlertTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertTests.swift; sourceTree = "<group>"; };
+		849DE9752492154100BE789F /* WeatherApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherApp.swift; sourceTree = "<group>"; };
+		849DE9772492154100BE789F /* TodayWeatherViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayWeatherViewModelTests.swift; sourceTree = "<group>"; };
+		849DE9782492154100BE789F /* WeeklyWeatherTableViewModelTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeeklyWeatherTableViewModelTest.swift; sourceTree = "<group>"; };
+		849DE9792492154100BE789F /* RealmManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmManagerTests.swift; sourceTree = "<group>"; };
 		84F0A354248D817100541775 /* RealmManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		9ED18D8D53FA00A23D77558B /* Pods_WeatherApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B943EE72D944A92F443F0B9A /* Pods-WeatherAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherAppTests.release.xcconfig"; path = "Target Support Files/Pods-WeatherAppTests/Pods-WeatherAppTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -168,6 +178,9 @@
 		840CCDA8248B56DE00DFB2DD /* WeatherAppTests */ = {
 			isa = PBXGroup;
 			children = (
+				849DE9732492154100BE789F /* Helper */,
+				849DE9792492154100BE789F /* RealmManagerTests.swift */,
+				849DE9762492154100BE789F /* ViewModel */,
 				840CCDAB248B56DE00DFB2DD /* Info.plist */,
 			);
 			path = WeatherAppTests;
@@ -279,6 +292,24 @@
 				840CCDE4248D218B00DFB2DD /* Main.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		849DE9732492154100BE789F /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				849DE9742492154100BE789F /* AlertTests.swift */,
+				849DE9752492154100BE789F /* WeatherApp.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		849DE9762492154100BE789F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				849DE9772492154100BE789F /* TodayWeatherViewModelTests.swift */,
+				849DE9782492154100BE789F /* WeeklyWeatherTableViewModelTest.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		84F0A353248D784E00541775 /* Storage */ = {
@@ -503,7 +534,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				849DE97A2492154100BE789F /* AlertTests.swift in Sources */,
+				849DE97D2492154100BE789F /* WeeklyWeatherTableViewModelTest.swift in Sources */,
+				849DE97B2492154100BE789F /* WeatherApp.swift in Sources */,
+				849DE97C2492154100BE789F /* TodayWeatherViewModelTests.swift in Sources */,
 				3E5561E6248EB23E00E69A90 /* RealmManager.swift in Sources */,
+				849DE97E2492154100BE789F /* RealmManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
